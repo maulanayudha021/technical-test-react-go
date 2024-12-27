@@ -38,12 +38,11 @@ This project is a full-stack application built using React JS for the frontend a
 - JWT tokens are stored in local storage to manage user sessions.
 
 ## Technologies Used
-- Frontend: React JS, Axios (for API calls), React Router (for navigation)
+- Frontend: React JS, Apollo Client, React Router (for navigation)
 - Backend: Go, GraphQL
 - Database: MongoDB
 - Authentication: JWT (JSON Web Token)
 - State Management: React Context API
-
 
 ## Installation
 1. Clone the Repository
