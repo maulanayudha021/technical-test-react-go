@@ -24,8 +24,9 @@ export default function Register() {
   const [register, { loading, error }] = useMutation(REGISTER_MUTATION, {
     onCompleted: (data) => {
       localStorage.setItem('token', data.register.token);
-      localStorage.setItem('name', data.login.name);
-      localStorage.setItem('email', data.login.email);
+      localStorage.setItem('userId', data.login.user._id);
+      localStorage.setItem('name', data.login.user.name);
+      localStorage.setItem('email', data.login.user.email);
       // navigate('/dashboard');
       window.location.href = "/dashboard";
     },

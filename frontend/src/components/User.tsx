@@ -111,6 +111,8 @@ export default function Dashboard() {
     }
   }
 
+  const storedUserId = localStorage.getItem('userId')
+
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
 
@@ -224,12 +226,14 @@ export default function Dashboard() {
                 >
                   Edit
                 </button>
-                <button
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
-                  onClick={() => handleDelete(user._id)}
-                >
-                  Delete
-                </button>
+                {user._id !== storedUserId && (
+                  <button
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+                    onClick={() => handleDelete(user._id)}
+                  >
+                    Delete
+                  </button>
+                )}
               </td>
             </tr>
           ))}

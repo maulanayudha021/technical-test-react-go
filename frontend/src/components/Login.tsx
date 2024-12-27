@@ -23,6 +23,7 @@ export default function Login() {
   const [login, { loading, error }] = useMutation(LOGIN_MUTATION, {
     onCompleted: (data) => {
       localStorage.setItem('token', data.login.token);
+      localStorage.setItem('userId', data.login.user._id);
       localStorage.setItem('name', data.login.user.name);
       localStorage.setItem('email', data.login.user.email);
       // navigate('/dashboard');

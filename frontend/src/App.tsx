@@ -23,6 +23,7 @@ export default function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
     localStorage.removeItem('email');
+    localStorage.removeItem('userId');
     setUserName(null);
     setUserEmail(null);
   };
