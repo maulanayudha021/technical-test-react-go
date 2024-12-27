@@ -53,11 +53,11 @@ func main() {
 
 func authMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if strings.Contains(r.URL.Path, "/query") {
-			log.Println("Bypassing authentication for GraphQL Playground request")
-
-			ctx := context.WithValue(r.Context(), "userID", "1")
-			next.ServeHTTP(w, r.WithContext(ctx))
+		authHeader := r.Header.Get("Authorization")
+		expectedAuth := "Basic YTBmM2Y4MTUwODg3NWYxNzM1MmViZGNjMjEyMTdmMTY="
+		if strings.Contains(r.URL.Path, "/query") && authHeader == expectedAuth {
+			log.Println("Bypassing authentication for GraphQL Playground request login/register only")
+			next.ServeHTTP(w, r)
 			return
 		}
 
@@ -80,7 +80,6 @@ func authMiddleware(next http.Handler) http.Handler {
 			}
 		}
 
-		authHeader := r.Header.Get("Authorization")
 		if authHeader == "" {
 			http.Error(w, "Authorization header missing", http.StatusUnauthorized)
 			return
