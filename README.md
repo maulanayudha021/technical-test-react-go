@@ -47,7 +47,7 @@ This project is a full-stack application built using React JS for the frontend a
 ## Installation
 1. Clone the Repository
 ```
-git clone https://github.com/your-username/technical-test-react-go.git
+git clone https://github.com/maulanayudha021/technical-test-react-go.git
 cd technical-test-react-go
 ```
 
@@ -61,6 +61,7 @@ go mod tidy
 Run the Go server:
 ```
 go run main.go
+notes: for the playground Authorization login & register using Authorization: Basic YTBmM2Y4MTUwODg3NWYxNzM1MmViZGNjMjEyMTdmMTY=
 ```
 The backend will be available on http://localhost:8080 for the playground URL: http://localhost:8080/playground
 
