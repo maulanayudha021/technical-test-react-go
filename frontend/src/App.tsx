@@ -3,14 +3,13 @@ import { Routes, Route, BrowserRouter, Navigate, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Users from './components/User';
-import Products from './components/Products'; // Corrected Products import
+import Products from './components/Products';
 
 export default function App() {
   const isAuthenticated = Boolean(localStorage.getItem('token'));
   const [userName, setUserName] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
-  // Get the user's name and email from localStorage
   useEffect(() => {
     if (isAuthenticated) {
       const storedName = localStorage.getItem('name');
@@ -24,14 +23,13 @@ export default function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('name');
     localStorage.removeItem('email');
-    setUserName(null); // Clear user name state
-    setUserEmail(null); // Clear user email state
+    setUserName(null);
+    setUserEmail(null);
   };
 
   return (
     <BrowserRouter>
       <div className="min-h-screen bg-black">
-        {/* Navigation Menu (conditionally rendered based on authentication) */}
         {isAuthenticated ? (
           <div className="flex justify-between p-4 bg-black text-white">
             {/* Navigation Menu */}
@@ -41,7 +39,6 @@ export default function App() {
               <Link to="/products" className="px-4 py-2 hover:bg-blue-700 rounded">Products</Link>
             </div>
 
-            {/* Logged-in User Info and Logout Button */}
             {isAuthenticated && userName && userEmail ? (
               <div className="flex items-center space-x-4">
                 <span className="mr-3">{`Welcome, ${userName}`}</span>
