@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, gql } from '@apollo/client';
+import Swal from 'sweetalert2';
 
 const GET_PRODUCTS = gql`
   query {
@@ -94,12 +95,37 @@ export default function ProductManagement() {
 
   const handleDelete = async (id: string) => {
     try {
-      await deleteProduct({
-        variables: { id }
+      const result = await Swal.fire({
+        title: 'Are you sure?',
+        text: 'This action cannot be undone!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
       });
-      refetch();
+  
+      if (result.isConfirmed) {
+        await deleteProduct({
+          variables: { id }
+        });
+        refetch();
+  
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'The product has been deleted.',
+          icon: 'success',
+          confirmButtonText: 'OK',
+        });
+      }
     } catch (error) {
       console.error('Error deleting product:', error);
+  
+      Swal.fire({
+        title: 'Error!',
+        text: 'There was an issue deleting the product.',
+        icon: 'error',
+        confirmButtonText: 'OK',
+      });
     }
   };
 
