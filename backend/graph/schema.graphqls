@@ -1,0 +1,86 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type User {
+  _id: ID!
+  name: String!
+  email: String!
+  password: String!
+}
+
+type Product {
+  _id: ID!
+  name: String!
+  price: Float!
+  stock: Int!
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User!
+  
+  products: [Product!]!
+  product(id: ID!): Product!
+}
+
+type Mutation {
+  register(input: RegisterInput!): AuthPayload!
+  login(input: LoginInput!): AuthPayload!
+
+  createUser(input: CreateUserInput!): User!
+  updateUser(id: ID!, input: UpdateUserInput!): User!
+  deleteUser(id: ID!): DeleteUserResponse!
+
+  createProduct(input: CreateProductInput!): Product!
+  updateProduct(id: ID!, input: UpdateProductInput!): Product!
+  deleteProduct(id: ID!): DeleteProductResponse!
+}
+
+input CreateUserInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  name: String
+  email: String
+  password: String
+}
+
+type DeleteUserResponse {
+  deletedUserId: String!
+}
+
+input CreateProductInput {
+  name: String!
+  price: Float!
+  stock: Int!
+}
+
+input UpdateProductInput {
+  name: String
+  price: Float
+  stock: Int
+}
+
+type DeleteProductResponse {
+  deletedProductId: String!
+}
+
+input RegisterInput {
+  name: String!
+  email: String!
+  password: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
