@@ -63,7 +63,8 @@ Run the Go server:
 ```
 go run main.go
 ```
-The backend will be available on http://localhost:8080.
+The backend will be available on http://localhost:8080
+Playground URL: http://localhost:8080/playground
 
 3. Frontend Setup
 Install Node.js dependencies:
