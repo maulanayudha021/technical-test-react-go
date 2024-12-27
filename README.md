@@ -61,6 +61,7 @@ go mod tidy
 Run the Go server:
 ```
 go run main.go
+notes: for the playground Authorization login & register using Authorization: Basic YTBmM2Y4MTUwODg3NWYxNzM1MmViZGNjMjEyMTdmMTY=
 ```
 The backend will be available on http://localhost:8080 for the playground URL: http://localhost:8080/playground
 
